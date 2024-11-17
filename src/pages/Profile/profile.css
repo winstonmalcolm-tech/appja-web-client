@@ -2,6 +2,46 @@
     height: calc(100vh - 120px);
 }
 
+.profile_header {
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.profile_header_left {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.profile_header_right {
+    height: 200px;    
+    width: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items:flex-start;
+}
+
+.profile_header_right button {
+    width: 150px;
+    background-color: transparent;
+    border-radius: 20px;
+    border: 1px solid gray;
+    height: 40px;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+.profile_header_right button:hover {
+    border-color: #fff;
+}
+
 .profile_avatar_container {
     width: 150px;
     height: 150px;
@@ -25,7 +65,7 @@
 .profile_avatar_container label {
     position: absolute;
     left: 7.5rem;
-    top: 14.5rem;
+    top: 16.5rem;
     background-color: #aaa;
     color: #000;
     font-size: 20px;
@@ -80,4 +120,19 @@
 
 .profile_subtitle button:hover {
     border-color: #fff;
+}
+
+.profile_app_display {
+    margin-top: 8rem;
+}
+
+.profile_app_display_header {
+    margin-bottom: 4rem;
+}
+
+.profile_app_display_header h1 {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-style: italic;
+    letter-spacing: 1px;
 }
