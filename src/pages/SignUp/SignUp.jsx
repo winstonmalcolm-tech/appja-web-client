@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { CircleLoader } from 'react-spinners';
 import './signup.css';
+import BASE_SERVER_URL from '../../constants/constants';
 
 const SignUp = () => {
     //firstName, lastName, email, username, password
@@ -32,7 +33,7 @@ const SignUp = () => {
             }
             setLoading(true);
     
-            const response = await axios.post("http://localhost:3000/auth/register", {firstName, lastName, email, username, password});
+            const response = await axios.post(`${BASE_SERVER_URL}/auth/register`, {firstName, lastName, email, username, password});
             
             toast.success(`${response.data.message}`);
             setFirstName("");

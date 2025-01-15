@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 2rem;
+    background-color: rgb(167, 40, 40);
 }
 
 .profile_header_left {

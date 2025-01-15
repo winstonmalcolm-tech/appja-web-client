@@ -28,7 +28,7 @@ const Pricing = () => {
     <div className="pricing_container">
 
       {
-        plans.map((data, i) => <PriceCard key={i} data={data} />)
+        plans.map((data, i) => <PriceCard key={i} data={data} purchase={false} />)
       }
 
     </div>

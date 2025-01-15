@@ -1,35 +1,43 @@
 import './App.css'
+import './index.css'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer';
-
-import { Route, Routes, Navigate} from 'react-router-dom';
-import Explore from './pages/Explore/Explore.jsx';
-import Pricing from './pages/Pricing/Pricing.jsx';
-import About from './pages/About/About.jsx';
-import Home from './pages/Home/Home.jsx';
-import Detail from './pages/Detail/Detail.jsx';
-import NewApp from './pages/NewApp/NewApp.jsx';
-import SignIn from './pages/SignIn/SignIn.jsx';
-import SignUp from './pages/SignUp/SignUp.jsx';
-import NotFound from './pages/NotFound/NotFound.jsx';
-import Profile from './pages/Profile/Profile.jsx';
-
+import { useContext } from 'react';
+import { Route, Routes, Navigate, useLocation} from 'react-router-dom';
+import {Explore, Pricing, About, Home, DeveloperDetail, AppDetail, NewApp, Purchase, SignIn, SignUp, NotFound, Profile, Upload, EditApp, EditProfile, ProtectedRoutes, CompleteOrder} from "./pages/index.js";
+import { TokenContext } from './contexts/tokenContextProvider.jsx';
 
 function App() {
-
+  const { pathname } = useLocation();
+  const { tokens } = useContext(TokenContext);
   return (
     <div className="container">
-      <Navbar/>
+      {pathname == "/upload" ? null : <Navbar/>}
       <Routes>
-        <Route path='/' element={localStorage.getItem("accessToken") ? <Navigate replace={true} to="/profile"/>: <Home />} />
+        <Route path='/' element={tokens ? <Navigate replace={true} to="/profile"/>: <Home />} />
         <Route path='/explore' element={<Explore/>}/>
         <Route path='/about' element={<About />} />
         <Route path='/pricing' element={<Pricing />} />
-        <Route path='/profile' element={<Profile />} />
-        <Route path='/apps'>
-          <Route path=':id' element={<Detail />} />
-          <Route path='new' element={<NewApp />} />
+
+        <Route element={<ProtectedRoutes />}>
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/edit' element={<EditProfile />} />
+          <Route path='/purchase' element = {<Purchase />} />
+          <Route path="/complete-order" element = {<CompleteOrder />} />
+          
+          <Route path="/apps">
+            <Route path='new' element={<Upload />} />
+            <Route path="edit/:appId" element={<EditApp />} />
+          </Route>
         </Route>
+        
+        <Route path='/developer'>
+          <Route path=":id" element={<DeveloperDetail />}/>
+        </Route>
+        
+        <Route path='/apps/:id' element={<AppDetail />} />
+
+
         <Route path='/auth'>
           <Route path='login' element={<SignIn />} />
           <Route path='register' element={<SignUp />} />

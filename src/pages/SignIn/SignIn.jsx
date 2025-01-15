@@ -5,7 +5,8 @@ import "./signin.css";
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { CircleLoader } from 'react-spinners';
-import TokenContext from '../../contexts/tokenContext/tokenContext';
+import { TokenContext } from '../../contexts/tokenContextProvider';
+import BASE_SERVER_URL from '../../constants/constants';
 
 
 const SignIn = () => {
@@ -17,7 +18,7 @@ const SignIn = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const { setToken } = useContext(TokenContext);
+  const { setTokens } = useContext(TokenContext);
 
   const [highlight, setHighLight] = useState(false);
 
@@ -31,7 +32,9 @@ const SignIn = () => {
         return;
       }
 
-      const response = await axios.post("http://localhost:3000/auth/login", {email: identifier, password: password});
+      setLoading(true);
+
+      const response = await axios.post(`${BASE_SERVER_URL}/auth/login`, {email: identifier, password: password});
 
       toast.success(`${response.data.message}`);
 
@@ -40,9 +43,7 @@ const SignIn = () => {
       setPassword("");
       
       //Set tokens to global context
-      setToken({accessToken: response.data.accessToken, refreshToken: response.data.refreshToken});
-      localStorage.setItem("accessToken", response.data.accessToken);
-      localStorage.setItem("refreshToken", response.data.refreshToken);
+      setTokens({accessToken: response.data.accessToken, refreshToken: response.data.refreshToken});
 
       navigate("/profile");
 
