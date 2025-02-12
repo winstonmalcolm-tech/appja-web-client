@@ -12,10 +12,21 @@
 
 .accordian_head{
     display: flex;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
     cursor: pointer;
+}
+
+.title {
+    flex: 5;
+}
+
+.expand_btn {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .content {

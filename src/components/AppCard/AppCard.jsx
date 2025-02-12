@@ -15,13 +15,13 @@ const AppCard = ({app, developerId}) => {
         <img src={app.app_icon_url} alt="" className="object-cover w-full h-full"/>
       </div>
       <div className="mt-2 flex flex-col gap-3 px-3">
-        <h1>{app.app_name}</h1>
+        <h1 className="text-xl">{app.app_name}</h1>
         <div className="flex justify-between">
 
-          <h3>{app.app_category}</h3>
-          <h3>Size: {app.app_size}MB</h3>
+          <h3 className="text-gray-300">{app.app_category}</h3>
+          <h3 className="text-gray-300">Size: {app.app_size}MB</h3>
         </div>
-        <h3>{app.number_of_downloads} Downloads</h3>
+        <h3 className="text-gray-300">{app.number_of_downloads} Downloads</h3>
         
         <div className="flex justify-between">
 

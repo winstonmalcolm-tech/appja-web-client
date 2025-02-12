@@ -12,7 +12,13 @@
     height: fit-content;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
+
+.help_btn {
+    cursor: pointer;
+}
+
 
 .upload_return_container a {
     padding: 10px;
@@ -51,6 +57,8 @@
     border-radius: 20px;
     transition: .5s;
 }
+
+
 .upload_form_container form select {
     width: 60%;
     height: 60px;
@@ -99,4 +107,22 @@
 .upload_form_container form input:focus, .upload_form_container form select:focus, .upload_form_container form textarea:focus {
     outline: none;
     border-color: var(--color-primary);
+}
+
+@media screen and (max-width: 768px) {
+    .upload_form_container form input {
+        width: 100%;
+    }
+
+    .upload_form_container form select {
+        width: 100%;
+    }
+
+    .upload_form_container form textarea {
+        width: 100%;
+    }
+
+    .upload_form_container form label {
+        width: 80%;
+    }
 }

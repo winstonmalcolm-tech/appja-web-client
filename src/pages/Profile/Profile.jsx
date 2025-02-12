@@ -88,23 +88,23 @@ const Profile = () => {
 
   return (
     <div>
-      <div className='flex'>
-        <div className='flex-1 w-full h-52 flex gap-5 mt-11'>
+      <div className='flex max-md:flex-col max-md:items-center'>
+        <div className='flex-1 w-full h-52 flex gap-5 mt-11  max-md:flex-col max-md:items-center'>
           {/* Image container */}
           <div className='h-52 w-52 flex justify-center items-start bg-gradient-to-r from-custom-purple to-off-purple rounded-full'>
             {!state.user.profile_image ? <h1 className='flex justify-center items-center h-full w-full text-6xl'>{state.user.first_name.charAt(0).toUpperCase()}{state.user.last_name.charAt(0).toUpperCase()}</h1> : <img className='w-full h-full object-cover object-top rounded-full' src={state.user.profile_image}/>}
           </div>
 
           <div className='flex flex-col h-full justify-center'>
-            <h1 className='text-3xl'>{state.user.first_name} {state.user.last_name}</h1>
+            <h1 className='text-3xl max-[981px]:text-xl'>{state.user.first_name} {state.user.last_name}</h1>
             <h4 className='text-gray-300'>@{state.user.username}</h4>
             {state.user.plan == "Hobbyist" ? <h5 className='mb-10 text-gray-300'>Hobbyist Plan - <Link to="/purchase" className='text-purple-600 hover:text-purple-400 transition duration-300'>Upgrade</Link></h5> : <h5 className='mb-10'>Standard Plan</h5>}
             <Link to={"/edit"} className="p-2 border-2 bg-transparent rounded-xl text-center">Edit Profile</Link>
           </div>
         </div>
 
-        <div className='flex-1 flex w-full justify-end items-center'>
-          {state.user.plan == "Hobbyist" && state.apps.length == 3 ? <h1>You have reach the limit to upload, please upgrade or delete an app</h1> : <Link to="/apps/new" className="py-2 px-16 hover:bg-custom-purple hover:border-none border-2 transition duration-300 bg-transparent rounded-xl text-center">New app +</Link>}
+        <div className='flex-1 flex w-full justify-end items-center max-md:flex-none max-md:mt-10 max-md:justify-center'>
+          {state.user.plan == "Hobbyist" && state.apps.length == 3 ? <h1>You have reach the limit to upload, please upgrade or delete an app</h1> : <Link to="/apps/new" className="py-2 px-16 max-md:px-10 hover:bg-custom-purple hover:border-none border-2 transition duration-300 bg-transparent rounded-xl text-center">New app +</Link>}
         </div>
       </div>
       

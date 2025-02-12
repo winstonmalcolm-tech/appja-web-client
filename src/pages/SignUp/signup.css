@@ -124,3 +124,27 @@
 .signup_form form input:focus {
     border-color: var(--color-primary);
 }
+
+@media screen and (max-width: 850px) {
+    .signup_content {
+        width: 100%;
+    }
+
+    .signup_heading {
+        text-align: center;
+        flex: none;
+    }
+
+    .signup_heading h1 {
+        font-size: 37px;
+    }
+
+    .signup_form {
+        flex: none;
+        width: 100%;
+    }
+
+    .signup_form_name {
+        flex-direction: column;
+    }
+}

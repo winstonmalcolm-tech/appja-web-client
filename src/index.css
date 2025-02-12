@@ -8,8 +8,8 @@
 
 
 * {
-    padding: 0;
-    margin: 0;
+    padding: 0px;
+    margin: 0px;
     box-sizing: border-box;
     color: #fff;
     font-size: 16px;
@@ -52,6 +52,7 @@ body {
 --tilt-font: font-family: "Tilt Neon", sans-serif;
 
 }
+
 
 /* width */
 ::-webkit-scrollbar {

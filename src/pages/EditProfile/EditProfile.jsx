@@ -65,20 +65,17 @@ const EditProfile = () => {
             formData.append("socials", JSON.stringify(socials));
 
             if (localFile) {
-
                 formData.append("profileImg", localFile.data);
             }
-
 
             const response = await api.put("developer/update",
                 formData,
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data'
-                    }
+                    },
                 } 
             );
-
             toast.success(response.data.message);
 
         } catch (error) {
@@ -87,19 +84,19 @@ const EditProfile = () => {
         } finally {
             setIsUpdating(false);
         }
-        
-
     }
     
     const getData = async () => {
     
         try {
             const response = await api.get("developer");
-            
+            console.log(response.data);
             setEmail(response.data.user.email);
             setFirstName(response.data.user.first_name);
             setLastName(response.data.user.last_name);
-            setProfileImg(response.data.user.profile_image);
+            if (response.data.user.profile_image) {
+                setProfileImg(response.data.user.profile_image);
+            }
             setUsername(response.data.user.username);
 
             for (let social of response.data.socials) {
@@ -140,7 +137,7 @@ const EditProfile = () => {
     }
 
   return (
-    <div className='w-full flex justify-center mt-20'>
+    <div className='w-full flex justify-center mt-20 max-md:mt-10'>
         <form onSubmit={submitHandler} method="post" className='flex flex-col gap-5 items-center w-full'>
             <h1 className='overflow-hidden text-4xl'>Modify</h1>
 
@@ -149,17 +146,17 @@ const EditProfile = () => {
                     { (!profileImg && !localFile) ? <h1 className='flex items-center justify-center h-full w-full text-6xl'>{firstName.charAt(0).toUpperCase()}{lastName.charAt(0).toUpperCase()}</h1> : <img className="w-full h-full object-cover object-top rounded-full" src={localFile ? localFile.localFile : profileImg}/> }
                 </div>
                 <label htmlFor="image" className='absolute top-3/4 left-[250px] bg-blue-400 p-2 rounded-lg hover:cursor-pointer'>Select</label>
-                <input type="file" id="image" hidden={true} onChange={onImageChange}/>
+                <input type="file" id="image" hidden={true} onChange={onImageChange} accept="image/*"/>
             </div>
 
-            <input type="text" className="w-3/5 h-14 rounded-xl bg-transparent border-2 border-gray-500 focus:border-purple-400 outline-none ps-3" onChange={(e) => setEmail(e.target.value)} value={email} placeholder='Email..'/>
-            <input type="text" className="w-3/5 h-14 rounded-xl bg-transparent border-2 border-gray-500 focus:border-purple-400 outline-none ps-3" onChange={(e) => setFirstName(e.target.value)} value={firstName} placeholder='First name'/>
-            <input type="text" className="w-3/5 h-14 rounded-xl bg-transparent border-2 border-gray-500 focus:border-purple-400 outline-none ps-3" onChange={(e) => setLastName(e.target.value)} value={lastName} placeholder='Last name'/>
-            <input type="text" className="w-3/5 h-14 rounded-xl bg-transparent border-2 border-gray-500 focus:border-purple-400 outline-none ps-3" onChange={(e) => setUsername(e.target.value)} value={username} placeholder='Username'/>
-            <input type="text" className="w-3/5 h-14 rounded-xl bg-transparent border-2 border-gray-500 focus:border-purple-400 outline-none ps-3" onChange={(e) => setGithub(e.target.value)} value={github} placeholder='Github'/>
-            <input type="text" className="w-3/5 h-14 rounded-xl bg-transparent border-2 border-gray-500 focus:border-purple-400 outline-none ps-3" onChange={(e) => setWebsite(e.target.value)} value={website} placeholder='Website'/>
-            <input type="text" className="w-3/5 h-14 rounded-xl bg-transparent border-2 border-gray-500 focus:border-purple-400 outline-none ps-3" onChange={(e) => setInstagram(e.target.value)} value={instagram} placeholder='Instagram'/>
-            <input type="text" className="w-3/5 h-14 rounded-xl bg-transparent border-2 border-gray-500 focus:border-purple-400 outline-none ps-3" onChange={(e) => setLinkedIn(e.target.value)} value={linkedIn} placeholder='LinkedIn'/>
+            <input type="text" className="w-3/5 max-md:w-full h-14 rounded-xl bg-transparent border-2 border-gray-500 focus:border-purple-400 outline-none ps-3" onChange={(e) => setEmail(e.target.value)} value={email} placeholder='Email..'/>
+            <input type="text" className="w-3/5 max-md:w-full h-14 rounded-xl bg-transparent border-2 border-gray-500 focus:border-purple-400 outline-none ps-3" onChange={(e) => setFirstName(e.target.value)} value={firstName} placeholder='First name'/>
+            <input type="text" className="w-3/5 max-md:w-full h-14 rounded-xl bg-transparent border-2 border-gray-500 focus:border-purple-400 outline-none ps-3" onChange={(e) => setLastName(e.target.value)} value={lastName} placeholder='Last name'/>
+            <input type="text" className="w-3/5 max-md:w-full h-14 rounded-xl bg-transparent border-2 border-gray-500 focus:border-purple-400 outline-none ps-3" onChange={(e) => setUsername(e.target.value)} value={username} placeholder='Username'/>
+            <input type="text" className="w-3/5 max-md:w-full h-14 rounded-xl bg-transparent border-2 border-gray-500 focus:border-purple-400 outline-none ps-3" onChange={(e) => setGithub(e.target.value)} value={github} placeholder='Github'/>
+            <input type="text" className="w-3/5 max-md:w-full h-14 rounded-xl bg-transparent border-2 border-gray-500 focus:border-purple-400 outline-none ps-3" onChange={(e) => setWebsite(e.target.value)} value={website} placeholder='Website'/>
+            <input type="text" className="w-3/5 max-md:w-full h-14 rounded-xl bg-transparent border-2 border-gray-500 focus:border-purple-400 outline-none ps-3" onChange={(e) => setInstagram(e.target.value)} value={instagram} placeholder='Instagram'/>
+            <input type="text" className="w-3/5 max-md:w-full h-14 rounded-xl bg-transparent border-2 border-gray-500 focus:border-purple-400 outline-none ps-3" onChange={(e) => setLinkedIn(e.target.value)} value={linkedIn} placeholder='LinkedIn'/>
 
             { isUpdating? <CircleLoader size={60} color="#cf70db" className='signup_load_icon'/>: <button type="submit" className='h-14 w-2/5 bg-purple-600 border-none text-white outline-none cursor-pointer transition duration-300 hover:bg-purple-500 rounded-lg'>Update</button>}
         </form>

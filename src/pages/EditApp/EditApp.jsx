@@ -162,7 +162,7 @@ const EditApp = () => {
   return (
     <main className='w-full h-full flex flex-col items-center mt-10'>
 
-        <form className='w-3/5 flex flex-col items-center' onSubmit={formHandler}>
+        <form className='w-3/5 flex flex-col items-center max-md:w-full' onSubmit={formHandler}>
             <div className='w-full mb-14'>
                 <div className='p-3 mb-8 w-full bg-black flex justify-between items-center'>
                     <h1 className='text-xl'>Description</h1>
@@ -177,7 +177,7 @@ const EditApp = () => {
                     <input id="changeicon" type="file" hidden={true} onChange={updateIconHandler}/>
                 </div>
 
-                <img src={updatedIcon == null ? icon : updatedIcon.localFile} alt="" className='h-80 w-2/5 object-contain m-auto'/>
+                <img src={updatedIcon == null ? icon : updatedIcon.localFile} alt="" className='h-80 w-2/5 object-contain m-auto max-md:w-full'/>
             </div>
 
             <div className='w-full mb-14'>
@@ -187,7 +187,7 @@ const EditApp = () => {
                     <input id="changemedia" type="file" hidden={true} multiple={true} onChange={mediaFilesHandler}/>
                 </div>
 
-                <div className='grid grid-cols-2 gap-5'>
+                <div className='grid grid-cols-2 gap-5 max-md:flex max-md:flex-wrap max-md:justify-center'>
                     {media.map((image, index) => (
                         <div key={index} className='border-[1px] border-purple-500 rounded-lg p-2'>
                             <button type="button" className='text-red-400 text-xl' onClick={() => removeMedia(index)}>Remove</button>

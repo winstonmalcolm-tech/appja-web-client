@@ -3,12 +3,13 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    padding: 0px;
 }
 
 .home_hero {
     display: flex;
     height: calc(100vh - 120px);
-    width: 100vw;
+    width: 100%;
 }
 
 .home_left {
@@ -162,6 +163,91 @@
 
     100% {
         transform: translateY(20px);
+    }
+}
+
+@media screen and (max-width: 1034px) {
+    .home_hero {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .home_left {
+        flex: none;
+        justify-content: center;
+        align-items: center;
+        height: fit-content;
+    }
+
+    .home_left h1 {
+        font-size: 35px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .home_right {
+        flex: none;
+        justify-content: start;
+        align-items: center;
+        height: fit-content;
+    }
+
+    .home_right img {
+        object-fit: contain;
+    }
+
+    .home_info_inner_section {
+        flex-direction: column;
+    }
+
+    .home_info_inner_section div:nth-child(2) {
+        width: 100%;
+        min-height: 450px;
+    }
+
+    .home_info_inner_section div:nth-child(2) img {
+        height: 40%;
+        width: 40%;
+    }
+
+    .home_why_container {
+        flex-direction: column;
+    }
+
+    .home_why_container div:nth-child(2) h3 {
+        text-align: center;
+    }
+
+    .accordian_list div{
+        width: 90%;
+    }
+
+    .home_see_price_container a {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .home_left h1{
+        font-size: 24px;
+    }
+
+    .home_info_inner_section div:nth-child(2) {
+        min-height: 400px;
+    }
+
+    .home_info_inner_section div:nth-child(2) img {
+        height: 80%;
+        width: 80%;
+    }
+
+    .home_info_inner_section div:first-child h3 {
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .home_info_inner_section div:first-child p {
+        text-align: justify;
     }
 }
 

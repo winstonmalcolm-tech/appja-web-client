@@ -21,7 +21,7 @@
 }
 
 .price_card_type h1 {
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .price_card_charge {
@@ -34,7 +34,7 @@
 }
 
 .price_card_charge h3 {
-    font-size: 50px;
+    font-size: 40px;
 } 
 
 .price_card_charge p {
@@ -67,7 +67,7 @@
 }
 
 .price_card_package ul li {
-    font-size: 20px;
+    font-size: 18px;
     display: flex;
     align-items: center;
     gap: 5px;

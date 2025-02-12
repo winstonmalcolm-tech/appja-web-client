@@ -5,7 +5,6 @@ import EditApp from "./EditApp/EditApp";
 import EditProfile from "./EditProfile/EditProfile";
 import Explore from "./Explore/Explore";
 import Home from "./Home/Home";
-import NewApp from "./NewApp/NewApp";
 import NotFound from "./NotFound/NotFound";
 import Pricing from "./Pricing/Pricing";
 import Profile from "./Profile/Profile";
@@ -15,6 +14,8 @@ import Upload from "./Upload/Upload";
 import Purchase from "./Purchase/Purchase"
 import ProtectedRoutes from "./ProtectedRoutes";
 import CompleteOrder from "./CompleteOrder/CompleteOrder";
+import Verified from "./Verified/Verified";
+
 
 export {
     About,
@@ -24,7 +25,6 @@ export {
     EditProfile,
     Explore,
     Home,
-    NewApp,
     NotFound,
     Pricing,
     Profile,
@@ -33,5 +33,6 @@ export {
     Upload,
     Purchase,
     ProtectedRoutes,
-    CompleteOrder
+    CompleteOrder,
+    Verified
 }

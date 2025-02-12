@@ -4,7 +4,7 @@ import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer';
 import { useContext } from 'react';
 import { Route, Routes, Navigate, useLocation} from 'react-router-dom';
-import {Explore, Pricing, About, Home, DeveloperDetail, AppDetail, NewApp, Purchase, SignIn, SignUp, NotFound, Profile, Upload, EditApp, EditProfile, ProtectedRoutes, CompleteOrder} from "./pages/index.js";
+import {Explore, Pricing, About, Home, DeveloperDetail, AppDetail, Purchase, SignIn, SignUp, NotFound, Profile, Upload, EditApp, EditProfile, ProtectedRoutes, CompleteOrder, Verified} from "./pages/index.js";
 import { TokenContext } from './contexts/tokenContextProvider.jsx';
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
         <Route path='/explore' element={<Explore/>}/>
         <Route path='/about' element={<About />} />
         <Route path='/pricing' element={<Pricing />} />
+        <Route path='/verified' element={<Verified />} />
 
         <Route element={<ProtectedRoutes />}>
           <Route path='/profile' element={<Profile />} />

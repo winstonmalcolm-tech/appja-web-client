@@ -6,7 +6,7 @@ const Pricing = () => {
   const plans = [
     {
       plan: "Hobbyist",
-      cost: "$0",
+      cost: "0",
       benefits: [
         "Ads",
         "3 Apps",
@@ -15,11 +15,11 @@ const Pricing = () => {
     }, 
     {
       plan: "Standard",
-      cost: "$15",
+      cost: "15",
       benefits: [
         "No Ads",
-        "Unlimited Apps",
-        "No Storage limit"
+        "10 Apps",
+        "200MB Storage limit"
       ]
     }
   ];

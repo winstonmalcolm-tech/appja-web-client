@@ -1,4 +1,4 @@
 .container {
-    width: 100vw;
+    width: 100%;
     background-color: var(--color-surface-mixed-a0);
 }

@@ -8,6 +8,7 @@ import CommentCard from '../../components/CommentCard/CommentCard';
 import { TokenContext } from '../../contexts/tokenContextProvider';
 import { toast } from 'react-toastify';
 import {format} from 'date-fns';
+import { FaShareAlt } from "react-icons/fa";
 
 
 const socket = io.connect("http://localhost:3000");
@@ -188,35 +189,36 @@ const AppDetail = () => {
 
   return (
     <div>
-        <div className='flex items-center justify-between'>
-          <div className='flex-auto w-fit h-52 flex gap-5 mt-11'>
+        <div className='flex items-center justify-between max-md:flex-col'>
+          <div className='flex-auto w-fit h-52 flex gap-5 mt-11 max-md:flex-none max-md:flex-col max-md:h-fit max-md:items-center max-md:mb-10'>
             {/* Image container */}
             <div className='h-52 w-52 flex justify-center items-start bg-gradient-to-r from-custom-purple to-off-purple rounded-full'>
               <img className='w-full h-full object-cover object-top rounded-full' src={data.app.app_icon_url}/>
             </div>
 
-            <div className='flex flex-col h-full justify-center'>
+            <div className='flex flex-col h-full justify-center max-md:items-center'>
               <h1 className='text-3xl mb-5'>{data.app.app_name}</h1>
-              <Link to={`/developer/${data.app.developer_id}`} className='text-gray-300 hover:text-blue-400 transition duration-300'>Creator @{data.app.username}</Link>
+              <Link to={`/developer/${data.app.developer_id}`} className='mb-3 text-gray-300 hover:text-blue-400 transition duration-300'>Creator @{data.app.username}</Link>
+              <FaShareAlt onClick={() => {navigator.clipboard.writeText(`${window.location}`); toast.info("Url copied")}} className='cursor-pointer'/>
             </div>
           </div>
 
-          <div className='flex-auto flex flex-col items-center'>
+          <div className='flex-auto flex flex-col items-center max-md:flex-none max-md:mb-10'>
             <h1 className='text-2xl '>{data.app.app_size}MB</h1>
             <h1 className='text-gray-400 text-lg'>Size</h1>
           </div>
 
-          <div className='flex-auto flex flex-col items-center'>
+          <div className='flex-auto flex flex-col items-center max-md:flex-none max-md:mb-10'>
             <h1 className='text-2xl'>{data.app.number_of_downloads}</h1>
             <h1 className='text-gray-400 text-lg'># Of Downloads</h1>
           </div>
 
-          <div className='flex-auto flex flex-col items-center'>
+          <div className='flex-auto flex flex-col items-center max-md:flex-none'>
             <button onClick={downloadFile} className='p-5 bg-purple-500 text-white text-lg rounded-lg'>Download</button>
           </div>
         </div>
 
-        <div className='w-3/4 mt-20'>
+        <div className='w-3/4 mt-20 max-md:w-full'>
           <h1 className='mb-2 text-4xl h-fit text-purple-500 w-fit overflow-hidden'>Description</h1>
           <hr className='w-3/4 bg-gray-400 border-none h-[1px] mb-5'/>
 
@@ -224,7 +226,7 @@ const AppDetail = () => {
         </div>
 
 
-        <div className='mt-20 flex flex-wrap gap-5'>
+        <div className='mt-20 flex flex-wrap gap-5 max-md:justify-center'>
           {data.media.map((image, i) => <img key={i} className='w-64 h-72 object-cover object-center' src={image.image_url} />)}
         </div>
 
@@ -232,7 +234,7 @@ const AppDetail = () => {
         <h1 className='mt-20 w-fit mb-2 text-4xl text-purple-500 overflow-hidden'>Reviews</h1>
         <hr className='w-3/4 bg-purple-500 border-none h-[1px] mb-5'/>
 
-        <div className='w-3/4'>
+        <div className='w-3/4 max-md:w-full'>
           <div className='w-full h-96 pr-4 mb-4'>
             {data.reviews.length < 1 ? <h1>No reviews</h1> : data.reviews.map((review, i) => <CommentCard key={i} review={review}/>)}
           </div>
@@ -242,9 +244,7 @@ const AppDetail = () => {
             <BsFillSendFill className='h-full cursor-pointer' onClick={sendComment}/>
           </div>
         </div>
-        
-         
-
+      
     </div>
   )
 }

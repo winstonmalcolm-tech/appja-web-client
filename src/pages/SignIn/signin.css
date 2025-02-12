@@ -93,3 +93,22 @@
     background-color: rgb(148, 48, 148);
 }
 
+@media screen and (max-width: 650px) {
+
+    .signin_container {
+        margin-top: 2rem;
+    }
+
+    .signin_content {
+        width: 100%;
+    }
+
+    .signin_heading {
+        text-align: center;
+    }
+
+    .signin_heading h1 {
+        font-size: 37px;
+    }
+}
+
