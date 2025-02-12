@@ -3,13 +3,14 @@ import { jwtDecode } from "jwt-decode";
 import dayjs from "dayjs";
 import { useContext } from "react";
 import { TokenContext } from "../contexts/tokenContextProvider";
+import BASE_SERVER_URL from "../constants/constants";
 
 //This is used to update the context - global state
 const useAxios = () => {
     const { setTokens, logout,tokens } = useContext(TokenContext);
     
     const axiosInstance = axios.create({
-        baseURL: 'http://localhost:3000/',
+        baseURL: BASE_SERVER_URL,
         headers: {
             Authorization: tokens ? `Bearer ${tokens.accessToken}` : ""
         }

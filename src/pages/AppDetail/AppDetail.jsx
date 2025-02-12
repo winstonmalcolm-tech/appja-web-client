@@ -9,9 +9,9 @@ import { TokenContext } from '../../contexts/tokenContextProvider';
 import { toast } from 'react-toastify';
 import {format} from 'date-fns';
 import { FaShareAlt } from "react-icons/fa";
+import BASE_SERVER_URL from "../../constants/constants";
 
-
-const socket = io.connect("http://localhost:3000");
+const socket = io.connect(`${BASE_SERVER_URL}`);
 
 
 const INITIAL_STATE = {
@@ -139,7 +139,7 @@ const AppDetail = () => {
 
   const appDetail = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/app/${id}`);
+      const response = await axios.get(`${BASE_SERVER_URL}/app/${id}`);
       
 
       setData(response.data);
